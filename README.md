@@ -183,13 +183,17 @@
   .one-px(@color){
       position: relative;
       &:after{
-          content: "";
-          display: block;
-          width: 100%;
-          height: 1px;
-          background: @color;
-          position: absolute;
-          bottom: 0;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: @color;
+        position: absolute;
+        bottom: 0;
+        transform: scaleY(.5);
+        @media only screen and (-webkit-device-pixel-ratio: 3){
+            transform: scaleY(.33333333);
+        }
       }
   }
 2.移动端事件基础
