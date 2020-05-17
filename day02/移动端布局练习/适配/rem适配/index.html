@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,
+            user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>webapp-rem适配</title>
+    <style type="text/less">
+        //@rem：1rem 应该占据多少给位图像素
+        @rem: 750/16rem;
+        .bg(@url){
+            background-image:url("@{url}@2x.png");
+            //相当于less中的if判断  像素比必须为3的时候 才能使用上{}中的样式
+            @media only screen and (-webkit-device-pixel-ratio: 3){
+                background-image: url("@{url}@3x.png");
+            }
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            .head{
+                width: 100%;
+                height: 268/@rem;
+                .top{
+                    height: 212/@rem;
+                    background: gray;
+                    box-sizing: border-box;
+                    padding: 48/@rem 24/@rem 36/@rem 48/@rem;
+                    .avatar{
+                        /* 
+                           64css像素:
+                            像素比为2的手机上需128物理像素
+                            像素比为3的手机上需192物理像素
+
+                            但头像图片实际尺寸是256*256位图像素,所有对于像素比为2或者3的手机请求图片时就有点亏了
+                         */
+                        margin-right: 32/@rem;
+                        float: left;
+                        width: 128/@rem;
+                        height: 128/@rem;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 4/@rem;
+                        }
+                    }
+                    .info{
+                        float: left;
+                        color: white;
+                        margin-top: -12/@rem;
+                        .title{
+                            margin-top: 4/@rem;
+                            margin-bottom: 16/@rem;
+                            /*  移动端没有默认字体大小的限制 */
+                            font-size: 0/@rem;
+                            .brand{
+                                /* 
+                                30css像素*18css像素的区域
+                                    在像素比为2的手机上, 60*36的图片
+                                    在像素比为3的手机上, 90*54的图片
+                                 */
+                                display: inline-block;
+                                width: 60/@rem;
+                                height: 36/@rem;
+                                vertical-align: middle;
+                                margin-top: 4/@rem;
+                                /* background-image: url("./img/brand@2x.png"); */
+                                .bg("./img/brand");
+                                background-size: 100%;
+                                background-repeat: no-repeat;
+                                margin-right: 12/@rem;
+                            }
+                            .name{
+                                font-size: 32/@rem;
+                                font-weight: bold;
+                                vertical-align: middle;
+                            }
+                        }
+                        .desc{
+                            font-size: 24/@rem;
+                        }
+                        .support{
+                            margin-top: 20/@rem;
+                            margin-bottom: 4/@rem;
+                            font-size: 0;
+                            .icon{
+                                display: inline-block;
+                                width: 24/@rem;
+                                height: 24/@rem;
+                                vertical-align: middle;
+                                /* background-image: url("./img/decrease_1@2x.png"); */
+                                .bg("./img/decrease_1");
+                                background-size: 100%;
+                                background-repeat: no-repeat;
+                                margin-right: 8/@rem;
+                            }
+                            .text{
+                                vertical-align: middle;
+                                font-size: 20/@rem;
+                            }
+                        }
+                    }
+                }
+                .bottom{
+                    height: 56/@rem;
+                    background: pink;
+                }
+            }
+            .navs{
+                width: 100%;
+                height: 80/@rem;
+                line-height: 80/@rem;
+                .item{
+                    width: 33.3333%;
+                    height: 100%;
+                    border: 2/@rem;
+                    float: left;
+                    a{
+                        display: block;
+                        width: 100%;
+                        height: 100;
+                        text-decoration: none;
+                        text-align: center;
+                        color: rgba(77,85,93,1);
+                    }
+                }   
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 让wrap充当整个视口区 -->
+    <div id="wrap">
+        <!-- 头部 -->
+        <div class="head">
+            <div class="top">
+                <div class="avatar">
+                    <img src="./img/avatar.jpg" />
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <i class="brand"></i>
+                        <span class="name">粥品香坊(大运村)</span>
+                    </div>
+                    <div class="desc">
+                        <span>蜂鸟专送/38分钟送达</span>
+                    </div>
+                    <div class="support">
+                        <i class="icon"></i>
+                        <span class="text">在线支付满28送美女</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom"></div>
+        </div>
+        <!-- 头部导航 -->
+        <div class="navs">
+            <div class="item">
+                <a href="javascript:;">商品</a>
+            </div>
+            <div class="item">
+                <a href="javascript:;">评价</a>
+            </div>
+            <div class="item">
+                <a href="javascript:;">商家</a>
+            </div>
+        </div>
+    </div> 
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/less.js/3.11.1/less.min.js"></script>
+<script>
+  //目的:将所有设备的布局视口调整为16rem
+  //包括设计图我们也以16rem来衡量
+  (function () {
+    var styleNode = document.createElement("style");
+    var w = document.documentElement.clientWidth/16;
+    styleNode.innerHTML = `html{font-size:${w}px!important}`;
+    document.head.appendChild(styleNode)
+  })()
+</script>
+</html>

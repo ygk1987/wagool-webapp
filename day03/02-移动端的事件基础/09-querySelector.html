@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+            user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>webapp-移动端事件的默认行为</title>
+    <style type="text/less">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        #app{
+            overflow: hidden;
+            width: 100%;
+            height: 100%; 
+        }
+        li{
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- 让wrap充当整个视口区 -->
+    <div id="app">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+<script>
+    
+    var ulNode = document.querySelector("ul");
+    //获取的是li的静态列表
+    //var liNodes = document.querySelectorAll("li");
+
+    //getxxx系列拿到的是一个动态列表
+    /* var liNodes = document.getElementsByTagName("li");
+    ulNode.innerHTML += "<li></li>";
+    Array.from(liNodes).forEach((li)=>{
+      li.style.background = "yellow";
+    }) */
+
+    //动态的添加了一个li
+    //dom树的结构会产生改变 dom树会重新绘制 内存地址也会产生改变
+    ulNode.innerHTML += "<li></li>";
+    //所以需要重新获取一遍
+    var liNodes = document.querySelectorAll("li");
+    liNodes.forEach((li)=>{
+       li.style.background = "pink";
+    })
+</script>
+<script src="https://cdn.bootcdn.net/ajax/libs/less.js/3.11.1/less.min.js"></script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,
+        user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+  <title>移动端布局基础完结</title>
+  <!-- 
+    禁止用户缩放
+      user-scalable=no,maximum-scale=1.0,minimum-scale=1.0
+   -->
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+      width: 700px;
+      height: 100px;
+      background: pink;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    在一些移动端浏览器下,如果布局视口出现宽度大于布局视口尺寸的元素
+    整个布局视口会选择完整的去包住那个元素!!!  bug
+    
+    完美视口
+   -->
+  <div id="app">
+    懵逼树上懵逼果,懵逼树下你和我,懵逼树前排排坐,一人一个懵逼果.懵逼树上懵逼果,懵逼树下你和我,懵逼树前排排坐,一人一个懵逼果.
+  </div>
+</body>
+</html>

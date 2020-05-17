@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>无缝滑屏的布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #wrap .swiper-wrap{
+            width: 100%;
+        }
+
+        #wrap .swiper-wrap .list{
+            width: 500%;
+            list-style: none;
+            overflow: hidden; /*清除浮动*/
+        }
+
+        #wrap .swiper-wrap .list li{
+            width: 20%;
+            float: left;
+        }
+
+        #wrap .swiper-wrap .list li img{
+            display: block; /*解决3像素空隙*/
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!-- 滑屏区域 -->
+        <div class="swiper-wrap">
+            <!-- 滑屏元素 -->
+            <ul class="list">
+                <li><img src="./img/1.jpg"></li>
+                <li><img src="./img/2.jpg"></li>
+                <li><img src="./img/3.jpg"></li>
+                <li><img src="./img/4.jpg"></li>
+                <li><img src="./img/5.jpg"></li>
+            </ul>
+        </div>
+    </div>
+<script>
+    // 1. 加meta标签
+    // 2. 挑选一个适配方案
+    (function () {
+        var styleNode = document.createElement("style");
+        var w = document.documentElement.clientWidth/16;
+        styleNode.innerHTML = `html{font-size:${w}px!important`;
+        document.head.appendChild(styleNode);
+    })()
+    // 3. 禁止移动端事件的默认行为
+    var wrap = document.querySelector("#wrap");
+    wrap.addEventListener("touchstart", (ev)=>{
+      ev = ev || event;
+      ev.preventDefault();
+    })
+</script>
+</body>
+</html>

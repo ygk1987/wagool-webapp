@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+            user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>webapp-事件的默认行为</title>
+    <style type="text/less">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        #wrap{
+            width: 200px;
+            height: 200px;
+            background: pink;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        #inner{
+            width: 100px;
+            height: 100px;
+            background: grey;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 让wrap充当整个视口区 -->
+    <div id="wrap">
+        <div id="inner">
+        </div>
+    </div> 
+</body>
+<script>
+    
+    var wrap = document.querySelector("#wrap");
+    var inner = document.querySelector("#inner");
+    document.oncontextmenu = function (ev) {
+        ev = ev || event;
+        ev.preventDefault();
+    }
+
+    wrap.oncontextmenu = function (ev) {
+        ev = ev || event;
+        ev.stopPropagation(); // 阻止事件冒泡
+    }
+    
+    
+    //鼠标右击事件
+    inner.oncontextmenu = function (ev) {
+        ev = ev || event;
+        console.log("-----");
+        // return false;
+        // ev.preventDefault(); //禁止事件的默认行为
+    }
+    
+</script>
+<script src="https://cdn.bootcdn.net/ajax/libs/less.js/3.11.1/less.min.js"></script>
+</html>

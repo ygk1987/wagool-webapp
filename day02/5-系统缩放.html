@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- 
+    initial-scale 参照于理想视口的尺寸进行缩放
+
+    initial-scale属于系统缩放!!!
+    改变的不光是视觉视口,也会改变布局视口
+
+    initial-scale=0.5 是一个缩小操作!!!
+        缩小操作: css像素的面积变小!!  视觉和布局视口包含的css像素的个数变多!!!
+        放大操作: css像素的面积变大!!  视觉和布局视口包含的css像素的个数变少!!!
+   -->
+  <meta name="viewport" content="initial-scale=2">
+  <title>系统缩放</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+      width: 375px;
+      height: 100px;
+      background: pink;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <!-- webApp布局视口:移动端浏览器展示网页的容器 -->
+  <div id="app">
+    懵逼树上懵逼果,懵逼树下你和我,懵逼树前排排坐,一人一个懵逼果.懵逼树上懵逼果,懵逼树下你和我,懵逼树前排排坐,一人一个懵逼果.
+  </div>
+</body>
+</html>

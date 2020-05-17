@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html{
+            font-size: 30px;
+        }
+        #app{
+            /*em 参照于自身的fontsize*/
+            /*
+                rem  : root em
+                    参照于根标签的fontsize
+            */
+            width: 10em;
+            height: 10em;
+            background: pink;
+            font-size: 20px;
+        }
+
+        #app2{
+            width: 10rem;
+            height: 10rem;
+            background: gray;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <div id="app2"></div>
+</body>
+</html>

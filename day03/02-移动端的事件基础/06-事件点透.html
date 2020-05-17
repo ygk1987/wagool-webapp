@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+            user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>webapp-移动端事件的默认行为</title>
+    <style type="text/less">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        #app{
+            overflow: hidden;
+            width: 100%;
+            height: 100%; 
+        }
+        #wrap{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            text-align: center;
+            overflow: auto;
+
+            position: absolute;
+            left: 0;
+            top: 0;
+           
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- 让wrap充当整个视口区 -->
+    <div id="app">
+        <div id="wrap">
+            
+        </div>
+        <a href="https://www.baidu.com">百度</a>
+    </div>
+</body>
+<script>
+    var app = document.querySelector("#app");
+    app.addEventListener("touchstart", (ev)=>{
+      ev = ev || event;
+      ev.preventDefault() 
+    })
+    
+    // pc端的事件在移动端有300毫秒的延迟
+    var wrap = document.querySelector("#wrap");
+    wrap.addEventListener("touchstart", function () {
+        this.style.display = "none";
+    })
+</script>
+<script src="https://cdn.bootcdn.net/ajax/libs/less.js/3.11.1/less.min.js"></script>
+</html>

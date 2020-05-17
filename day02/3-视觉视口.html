@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- 
+    1.用户放大  用户缩小
+      放大: 放大一个CSS像素的面积  视觉视口内包含的css像素的个数变少
+      缩小: 缩小一个CSS像素的面积  视觉视口内包含的css像素的个数变多
+    2.系统放大  系统缩小
+      与用户缩放类似,但改变的不光是视觉视口,布局视口也会改变!!!
+
+   -->
+  <meta name="viewport" content="width=device-width">
+  <title>webApp视觉视口</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+      width: 375px;
+      height: 100px;
+      background: pink;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <!-- webApp布局视口:移动端浏览器展示网页的容器 -->
+  <div id="app">
+    懵逼树上懵逼果,懵逼树下你和我,懵逼树前排排坐,一人一个懵逼果.懵逼树上懵逼果,懵逼树下你和我,懵逼树前排排坐,一人一个懵逼果.
+  </div>
+</body>
+</html>

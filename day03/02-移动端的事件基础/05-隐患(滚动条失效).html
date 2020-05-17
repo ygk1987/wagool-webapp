@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+            user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>webapp-移动端事件的默认行为</title>
+    <style type="text/less">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        #app{
+            overflow: hidden;
+            width: 100%;
+            height: 100%; 
+        }
+        #wrap{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            text-align: center;
+            overflow: auto;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 让wrap充当整个视口区 -->
+    <div id="app">
+        <div id="wrap">
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+            wrap <br/>
+        </div>
+    </div>
+</body>
+<script>
+    //移动端自带的滚动条 我们都是会禁止掉 然后自己实现的
+    //部分移动端浏览器中滚动条是比较丑的
+    var app = document.querySelector("#app");
+    var wrap = document.querySelector("#wrap");
+    app.addEventListener("touchstart", (ev)=>{
+      ev = ev || event; 
+      console.log(ev.cancelable); //检查该事件是否支持取消
+      ev.preventDefault(); //这一行代码在chrome的模拟器中是没有作用的!! 在真机上也不可以的!
+    })
+    /* 画webapp界面时:
+        1. 加viewport标签
+        2. 挑选一个适配方案
+        3. 禁止移动端所有的元素事件的默认行为
+     */
+     wrap.addEventListener("touchstart", (ev)=>{
+      ev = ev || event; 
+      console.log(ev.cancelable); //检查该事件是否支持取消
+      ev.stopPropagation(); 
+    })
+</script>
+<script src="https://cdn.bootcdn.net/ajax/libs/less.js/3.11.1/less.min.js"></script>
+</html>

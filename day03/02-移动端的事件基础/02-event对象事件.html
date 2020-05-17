@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+            user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>webapp-event对象事件</title>
+    <style type="text/less">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        #wrap{
+            width: 200px;
+            height: 200px;
+            background: pink;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 让wrap充当整个视口区 -->
+    <div id="wrap">
+        
+    </div> 
+</body>
+<script>
+    // touches          触发当前事件时,屏幕上的手指列表
+    // targetTouches    触发当前事件时,元素上的手指列表
+    // changedTouches   触发当前事件时,触发事件的手指列表
+    var wrap = document.querySelector("#wrap");
+    wrap.addEventListener("touchstart",(ev)=>{
+        ev = ev || event
+        console.log("touchstart", ev);
+    })
+    wrap.addEventListener("touchmove",(ev)=>{
+        ev = ev || event
+        console.log("touchmove", ev);
+    })
+    wrap.addEventListener("touchend",(ev)=>{
+        ev = ev || event
+        // console.log("touchend", ev);
+
+        wrap.innerHTML = "touches:" + ev.touches.length + "<br/>"
+        wrap.innerHTML = "targetTouches:" + ev.targetTouches.length + "<br/>"
+        wrap.innerHTML = "changedTouches:" + ev.changedTouches.length + "<br/>"
+
+        console.log("touches:" + ev.touches.length);
+        console.log("targetTouches:" + ev.targetTouches.length);
+        // console.log("changedTouches:" + ev.changedTouches[0]);
+        console.log("changedTouches:" + ev.changedTouches.length);
+        
+    })
+</script>
+<script src="https://cdn.bootcdn.net/ajax/libs/less.js/3.11.1/less.min.js"></script>
+</html>

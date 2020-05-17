@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- 
+    width: 布局视口的宽度
+    device-width: 设备独立像素的宽度
+
+    width=device-width: 将布局视口横向的尺寸调整为设备独立像素所规定的值!!!
+    
+    在iPhone6上 一个css像素占据多少个物理像素（面积比）
+      一个css像素 = 4个物理像素
+    
+    当写上了<meta name="viewport" content="width=device-width">标签之后;
+      布局视口有了一个别名  我们称之为理想视口!!!!
+
+    css像素 --- 设备独立像素 ---物理像素
+   -->
+  <meta name="viewport" content="width=device-width">
+  <title>webApp理想视口</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+      width: 375px;
+      height: 100px;
+      background: pink;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <!-- webApp布局视口:移动端浏览器展示网页的容器 -->
+  <div id="app">
+    app
+  </div>
+</body>
+</html>
