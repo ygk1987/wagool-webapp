@@ -232,6 +232,8 @@
           初始包含块: 是一个视窗大小的矩形;默认位置与视窗保持一致
       2.前端坐标系会随着你使用的css属性不一样而产生改变
 3.queryselector的坑
+    1.querySelector,拿到的是静态列表
+    2.如果dom树的结构会产生改变,需要querySelector重新拿一次
 4.无缝滑屏静态布局
     画webapp界面时:
       1. 加viewport标签
