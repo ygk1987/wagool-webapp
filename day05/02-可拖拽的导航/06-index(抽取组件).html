@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+  <title>02-可拖拽的导航</title>
+  <style>
+    *{margin: 0;padding: 0;}
+    html,body{width: 100%;height: 100%;overflow: hidden;}
+    #wrap{width: 100%;height: 100%;overflow: hidden;}
+    li{list-style: none;}
+    a{text-decoration: none;}
+  </style>
+  <link rel="stylesheet" href="./css/base.css">
+<body>
+  <div id="wrap">
+    <div class="nav-wrap"></div>
+  </div>
+</body>
+<script src="./js/transform.js"></script>
+<script src="./js/base.js"></script>
+<script>
+  /* 
+    1.如何在基本滑屏的基础上实现橡皮筋效果
+        我们让滑屏元素在滑动过程中(touchmove)的手指滑动的有效距离慢慢变小
+    2. 如何在橡皮筋的效果的基础上实现快速滑屏
+  */
+  window.onload = function () {
+    var wrap = document.querySelector("#wrap");
+    var arr = ["a","b","c","d","e","f","a","b","c","d","e","f","a","b","c","d","e","f","a","b","c","d","e","f","a","b","c","d","e","f"]
+    nav.init({
+      wrap:wrap,
+      arr:arr
+    })
+  }
+</script>
+</html>

@@ -26,6 +26,9 @@
         var swiperWrap = document.querySelector(".swiper-wrap");
         //创建滑屏元素
         var ulNode = document.createElement("ul");
+        //开启3d硬件加速
+        css(ulNode, "translateZ", 0);
+        
         //小圆点
         var pointWrap = document.querySelector(".swiper-wrap > .point-wrap");
         var liNode = document.querySelector(".swiper-wrap .list li")

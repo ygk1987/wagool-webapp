@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定位动画</title>
+  <style>
+    #app{
+      width: 100px;
+      height: 100px;
+      background: pink;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+<script>
+  window.onload = function () {
+    var appNode = document.querySelector("#app");
+    var flag = 0;
+    setInterval(() => {
+      flag++;
+      appNode.style.left = flag+"px";
+    }, 1000/60);
+  }
+</script>
+</html>

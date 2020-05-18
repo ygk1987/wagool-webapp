@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3d硬件加速</title>
+  <style>
+    #app{
+      width: 100px;
+      height: 100px;
+      background: pink;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+<script>
+  window.onload = function () {
+    var appNode = document.querySelector("#app");
+    var flag = 0;
+    setInterval(() => {
+      flag++;
+      //进行3d运动 浏览器会触发gpu渲染   特别烧显卡的
+      appNode.style.transform = "translateX("+(flag)+"px) translateZ(0px)"
+    }, 1000/60);
+  }
+</script>
+</html>
