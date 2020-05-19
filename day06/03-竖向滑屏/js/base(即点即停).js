@@ -1,7 +1,7 @@
 (function (w) {
   w.scroll = {};
 
-  function init({wrap,start,move,end,over}) {
+  function init(wrap) {
     //挑选一个适配方案
     var styleNode = document.createElement("style");
     var w = document.documentElement.clientWidth/16;
@@ -13,10 +13,10 @@
         ev.preventDefault();
     })
     //调用layout布局函数
-    sxmove(wrap,start,move,end,over);
+    move(wrap);
   }
 
-  function sxmove(wrap,start,move,end,over) {
+  function move(wrap) {
     /*竖向滑屏 
       clildNodes:包含文本子节点 firstChild = clildNodes[0]
       children:不包含文本子节点
@@ -83,9 +83,6 @@
 
       //实现即点即停
       clearInterval(clearTimer);
-
-      //定义touchstart的钩子函数
-      start && (typeof start === "function") && start.call(node)
     })
 
     wrap.addEventListener("touchmove",(ev)=>{
@@ -139,8 +136,6 @@
         }
       }
       transform.css(node,"translateY", translateY);
-      //为手动滑屏添加move钩子
-      move && (typeof move === "function") && move.call(node)
     })
 
     wrap.addEventListener("touchend",()=>{
@@ -160,9 +155,6 @@
         //説明touchend事件触发时 手动橡皮筋效果没有被触发  --> 进行带橡皮筋效果的快速滑屏
         fast();
       }
-
-      //为touchend 添加end钩子
-      end && (typeof end === "function") && end.call(node)
 
       function fast() {
         //Tween算法相关的函数(即点即停)
@@ -185,12 +177,7 @@
             t++;
             if(t>d){
               clearInterval(clearTimer);
-              //快速滑屏结束
-              over && (typeof over === "function") && over.call(node)
-              return;
             }
-            //为快速滑屏添加move钩子
-            move && (typeof move === "function") && move.call(node)
             transform.css(node,"translateY",Tween[type](t,b,c,d));
           }, 1000/60);
         }
