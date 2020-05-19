@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+  <title>02-可拖拽的导航</title>
+  <style>
+    *{margin: 0;padding: 0;}
+    html,body{width: 100%;height: 100%;overflow: hidden;}
+    #wrap{width: 100%;height: 100%;overflow: hidden;}
+    li{list-style: none;}
+    a{text-decoration: none;}
+  </style>
+  <style>
+    .nav-wrap{
+      width: 100%;
+      height: 50px;
+      padding: 10px 0 3px 0;
+      background: #eeeeee;
+    }
+    .nav-wrap > .list{
+      /*list 是需要靠内容撑开的;行内元素 行内块元素 浮动元素都是可以靠内容撑开的*/
+      float: left;
+      white-space: nowrap; /*让行内 或者 行内块元素不换行*/
+      font-size: 0; /*让3px空隙消失*/
+      background: pink;
+    }
+    .nav-wrap > .list > li{
+      display: inline-block;
+      padding: 0 10px;
+      height: 40px;
+      line-height: 40px;
+    }
+    .nav-wrap > .list > li > a{
+      font-size: 22px;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div class="nav-wrap">
+      <ul class="list">
+        <li><a href="javascript:;">首页</a></li>
+        <li><a href="javascript:;">MV</a></li>
+        <li><a href="javascript:;">约旦</a></li>
+        <li><a href="javascript:;">V榜</a></li>
+        <li>
+            <a href="javascript:;">音乐</a>
+        </li>
+        <li>
+            <a href="javascript:;">商城</a>
+        </li>
+        <li>
+            <a href="javascript:;">节目</a>
+        </li>
+        <li>
+            <a href="javascript:;">饭团</a>
+        </li>
+        <li>
+            <a href="javascript:;">咨询</a>
+        </li>
+        <li>
+            <a href="javascript:;">我的家</a>
+        </li>
+        <li>
+            <a href="javascript:;">App下载</a>
+        </li>
+        <li>
+            <a href="javascript:;">热门应用</a>
+        </li>
+        <li>
+            <a href="javascript:;">张大脸</a>
+        </li>
+        <li>
+            <a href="javascript:;">晓飞张</a>
+        </li>
+        <li>
+            <a href="javascript:;">冬雨老婆</a>
+        </li>
+        <li>
+            <a href="javascript:;">睡神1号</a>
+        </li>
+        <li>
+            <a href="javascript:;">睡神2号</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+<script src="./js/transform.js"></script>
+<script>
+  /* 
+    1.如何在基本滑屏的基础上实现橡皮筋效果
+        我们让滑屏元素在滑动过程中(touchmove)的手指滑动的有效距离慢慢变小
+    2. 如何在橡皮筋的效果的基础上实现快速滑屏
+  */
+  window.onload = function () {
+    //滑屏区域
+    var navWrap = document.querySelector(".nav-wrap");
+    //滑屏元素
+    var list = document.querySelector(".nav-wrap > .list")
+    //手指上一次touchmove完成时的位置
+    var lastPoint = 0;
+
+    navWrap.addEventListener("touchstart",(ev)=>{
+      ev = ev || event;
+      var touchC = ev.changedTouches[0];
+      //touchstart时手指的位置
+      lastPoint = touchC.clientX
+    })
+    navWrap.addEventListener("touchmove",(ev)=>{
+      ev = ev || event;
+      var touchC = ev.changedTouches[0];
+
+      var nowPoint = touchC.clientX; //当次touchmove时 手指的位置
+      var pointDisX = nowPoint - lastPoint; //当次touchmove 距离 上一次touchmove 我们手指移动的距离
+      lastPoint = nowPoint;
+
+      //要实现橡皮筋效果 就是让pointDisX的有效距离 越来越小
+      transform.css(list,"translateX", transform.css(list,"translateX")+pointDisX);
+    })
+    navWrap.addEventListener("touchend",()=>{
+      //函数体
+    })
+  }
+</script>
+</html>

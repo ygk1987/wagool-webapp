@@ -1,0 +1,19 @@
+.swiper-wrap{width: 100%; position: relative;}
+
+.swiper-wrap .list{list-style: none;overflow: hidden; /*清除浮动*/position: absolute;}
+
+.swiper-wrap .list li{float: left;}
+
+.swiper-wrap .list li img{display: block;  /*解决3像素空隙*/width: 100%;}
+
+.swiper-wrap .point-wrap{
+    font-size: 0; text-align: center; position: absolute;
+    bottom:0; width: 100%; z-index: 9;
+}
+
+.swiper-wrap .point-wrap span{
+    display: inline-block; width: 14px;height: 14px;
+    background: pink;border-radius: 50%;margin-right: 3px;
+}
+
+.swiper-wrap .point-wrap span.active{background:grey;}

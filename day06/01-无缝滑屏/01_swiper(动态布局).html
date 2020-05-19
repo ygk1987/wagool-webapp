@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>无缝滑屏的布局</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <style>
+        *{margin: 0; padding: 0;}
+        html,body{width: 100%;height: 100%;overflow: hidden;}
+        #wrap{width: 100%;height: 100%;overflow: hidden;}
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!-- 滑屏区域 -->
+        <!--如果以后需要使用无缝滑屏;那必须在界面上写下一个包含swiper-wrap这个class的元素-->
+        <div class="swiper-wrap" needWF needAuto>
+            <div class="point-wrap"></div>
+        </div>
+    </div>
+</body>
+<script src="./js/transform.js"></script>
+<script src="./js/base.js"></script>
+<script>
+    window.onload = function () {
+        var wrap = document.querySelector("#wrap");
+        var arr = ["./img/1.jpg","./img/2.jpg","./img/3.jpg","./img/4.jpg","./img/5.jpg"]
+        swiper.init(wrap, arr); //移动端基础框架的搭建
+        // swiper.slide(arr); //移动端无缝滑屏
+    }
+</script>
+</html>

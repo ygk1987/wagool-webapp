@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this</title>
+</head>
+<body>
+  <script>
+    /* 1.ES5 this的指向: (this是函数内部的特征)
+          this指向于谁;得看函数调用位置上的调用形式:
+            独立调用  test()      this --> window
+            隐式调用  obj.test()  this --> obj
+            显示调用  test.call(obj,msg)  test.apply(obj,[msg])  this --> obj
+            构造调用  new test()  this --> 构造出来的实例对象
+
+        2.ES6 箭头函数
+            箭头函数的this指向 是跟作用域挂钩的  this指向它的上一层函数的this
+
+        3.所有框架的回调函数的this指向 不能瞎猜 得看api!!!
+    */
+    function test(msg) {
+      console.log(this,msg);
+    }
+    test();
+
+    var obj = {
+      test:test,
+      name:'obj'
+    }
+
+    test.call({name:"guokun",wife:"zhouyin"},"他们有两个小宝宝")
+  </script>
+</body>
+</html>
