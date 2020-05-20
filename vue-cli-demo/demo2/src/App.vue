@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <span>wagool,yaoyao,guoguo</span>
     <img src="./assets/logo.png">
   </div>
 </template>
@@ -8,7 +9,6 @@
 
 export default {
   name: 'App',
-  render
 }
 </script>
 
