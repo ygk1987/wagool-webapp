@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue版本</title>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+<script src="./js/vue.runtime.js"></script>
+<script>
+  Vue.config.productionTip = false;
+  var vm = new Vue({
+    el:"#app",
+    render:function(h){
+      return h("wagool")
+    },
+    components:{
+      wagool:{
+        name:"wagool",
+        render:function(h){
+          return h("span","瑶瑶，果果");
+        }
+      }
+    }
+  })
+ 
+</script>
+</html>
