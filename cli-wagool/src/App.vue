@@ -1,17 +1,22 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- 一级组件来渲染一级路由 -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import axios from "axios";
 
 export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  async mounted(){
+    const seller = await axios.get("/api/seller");
+    console.log(seller);
   }
 }
 </script>
