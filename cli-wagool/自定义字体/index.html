@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自定义字体</title>
+  <style>
+    /* 自定义字体 
+      如果你想百分百保证所有的用户使用的字体都是统一的,那就要使用自定义字体
+    */
+    /* 业务驱动 */
+    @font-face {
+      font-family: "wagool";
+      src: url("./font/AGENCYB.TTF"),
+            url("./font/AGENCYR.TTF");
+    }
+    #app{
+      font-size: 30px;
+      font-family: "wagool";
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    abc123
+  </div>
+</body>
+</html>

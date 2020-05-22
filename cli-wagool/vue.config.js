@@ -1,5 +1,9 @@
 //这里配置是vue脚手架cli的配置,而不再是webpack的配置
 const {seller, goods, ratings} = require("./data/data.json")
+const path = require('path')
+function resolve (dir) {
+    return path.join(__dirname, dir)
+}
 module.exports = {
     //在我们ctrl + s时才能启作用
     lintOnSave:false,
@@ -22,6 +26,12 @@ module.exports = {
     configureWebpack:{
         devServer:{
             port:8888
+        },
+        resolve: {
+            alias: {
+                'pages': resolve('src/pages'),
+                'components': resolve('src/components'),
+            }
         }
     }
 }
