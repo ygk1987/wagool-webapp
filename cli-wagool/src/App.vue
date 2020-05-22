@@ -32,7 +32,6 @@
     height 100%
     overflow hidden
     .navs
-      background pink
       display flex
       height 40px
       line-height 40px
