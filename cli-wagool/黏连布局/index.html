@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" 
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <title>黏连布局</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    html,body,#app{
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    #app{
+      width: 100%;
+      height: 100%;
+      background: pink;
+      overflow: auto;
+    }
+    .mainWrap{
+      min-height: 100%;
+    }
+    .main{
+      text-align: center;
+      padding-bottom: 50px;
+      /* overflow: hidden; */
+      zoom: 1;
+    }
+    .main::after{
+      display: block;
+      content: "";
+      clear: both;
+    }
+    .footer{
+      margin-top: -50px;
+
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background: gray;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="mainWrap">
+      <!--main的高度必须要撑开mainWrap的高度 main一定要清除浮动-->
+      <div class="main">
+        <span style="float: left; width: 100%">
+          戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br>
+          戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br>
+          戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br>
+          戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br>
+          戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br>
+          戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br>
+          戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br>
+          戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br>
+          戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br>
+          戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br>
+          戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br>
+          戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br>
+          戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br> 戏子入画 一生天涯 <br>
+        </span>
+      </div>
+    </div>
+    <div class="footer">
+      footer
+    </div>
+  </div>
+</body>
+</html>

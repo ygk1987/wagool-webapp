@@ -39,6 +39,16 @@
     <div class="bg">
         <img src="https://fuss10.elemecdn.com/f/5c/ead54394c3de198d3e6d3e9111bbfpng.png">
     </div>
+    <div class="mask">
+        <div class="mainWrap">
+            <div class="main">
+                <!--画遮罩页-->
+            </div>
+        </div>
+        <div class="footer">
+            <i class="icon-close"></i>
+        </div>
+    </div>
     <div class="bottom"></div>
   </div>
 </template>
@@ -164,4 +174,25 @@
         img
             width 100%
             height 100%
+    .mask
+        position fixed
+        left 0
+        right 0
+        top 0
+        bottom 0
+        z-index 9
+        background rgba(7,17,27,.8)
+        overflow auto
+        .mainWrap
+            min-height 100%
+        .main
+            @extend .clearfix
+            padding-bottom 96px
+        .footer
+            margin-top -96px
+            height 96px
+            color white
+            line-height 96px
+            text-align center
+            font-size 32px
 </style>

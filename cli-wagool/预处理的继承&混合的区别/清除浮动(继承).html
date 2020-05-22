@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+            user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>webapp-不做适配</title>
+    <style type="text/less">
+        /*
+        当公共样式都是一些静态样式不需要传参的  使用继承
+        当公共样式中有一部分需要变化的样式     使用混合
+        */
+        .clearfix{
+            zoom: 1;
+            &::after{
+              display: block;
+              content:"";
+              clear: both;
+          }
+        }
+        #wrap:extend(.clearfix all){
+          border: 1px solid;
+        }
+        #wrap2:extend(.clearfix all){
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <!-- 让wrap充当整个视口区 -->
+    <div id="wrap">
+        <div style="width: 200px;
+        height: 200px;background: pink;
+        float: left;"></div>
+    </div> 
+    <div id="wrap2">
+        <div style="width: 200px;
+        height: 200px;background: pink;
+        float: left;"></div>
+    </div> 
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/less.js/3.11.1/less.min.js"></script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+            user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>webapp-不做适配</title>
+    <style type="text/less">
+        .clearfix(){
+            zoom: 1;
+            &::after{
+              display: block;
+              content:"";
+              clear: both;
+          }
+        }
+      #wrap{
+          border: 1px solid;
+          /* overflow: hidden; */
+          .clearfix()
+      }
+      #wrap2{
+          border: 1px solid;
+          /* overflow: hidden; */
+          .clearfix()
+      }
+    </style>
+</head>
+<body>
+    <!-- 让wrap充当整个视口区 -->
+    <div id="wrap">
+        <div style="width: 200px;
+        height: 200px;background: pink;
+        float: left;"></div>
+    </div> 
+    <div id="wrap2">
+        <div style="width: 200px;
+        height: 200px;background: pink;
+        float: left;"></div>
+    </div> 
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/less.js/3.11.1/less.min.js"></script>
+</html>

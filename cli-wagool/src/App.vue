@@ -27,11 +27,13 @@
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
+  @import "./common/stylus/mixin.styl";
   #app
     width 100%
     height 100%
     overflow hidden
     .navs
+      one-px(rgba(7,17,27,.1))
       display flex
       height 40px
       line-height 40px
@@ -42,4 +44,6 @@
           width 100%
           height 100%
           text-align center
+          &.active
+            color rgba(240,20,20,1)
 </style>
