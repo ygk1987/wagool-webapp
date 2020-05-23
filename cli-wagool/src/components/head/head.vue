@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="btn" @click="showMask=true">
-            <span>5个</span>
+            <span v-if="seller.supports">{{seller.supports.length}}个</span>
             <i class="icon-keyboard_arrow_right"></i>
         </div>
     </div>
@@ -84,12 +84,17 @@
     import line from "components/line/line"
     import list from "components/list/list"
     import stars from "components/stars/stars"
+
+    import {mapState} from "vuex"
     export default {
         name: 'v-head',
         data(){
             return{
                 showMask:false
             }
+        },
+        computed:{
+            ...mapState(["seller"]),
         },
         components:{
             "v-icon":icon,

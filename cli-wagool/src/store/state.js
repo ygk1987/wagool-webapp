@@ -1,3 +1,6 @@
+//1.初始化数据
 export default{
-  test:'测试 vuex'
+  seller:{},
+  goods:[],
+  ratings:[],
 }
