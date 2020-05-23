@@ -4,7 +4,6 @@ import App from './App.vue'
 import router from '@/router/router.js'
 import store from '@/store/store.js'
 import "@/common/stylus/iconmoon.styl"
-import "@/common/stylus/transition.styl"
 
 Vue.config.productionTip = false
 

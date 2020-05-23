@@ -20,12 +20,12 @@
                 <span class="text">在线支付满28送美女</span>
             </div>
         </div>
-        <div class="btn" @click="showMask=true">
+        <div class="btn">
             <span>5个</span>
             <i class="icon-keyboard_arrow_right"></i>
         </div>
     </div>
-    <div class="bulletin" @click="showMask=true">
+    <div class="bulletin">
         <div class="icon">
             <i></i>
         </div>
@@ -39,63 +39,26 @@
     <div class="bg">
         <img src="https://fuss10.elemecdn.com/f/5c/ead54394c3de198d3e6d3e9111bbfpng.png">
     </div>
-    <transition name="mask">
-        <div class="mask" v-show="showMask">
-            <div class="mainWrap">
-                <div class="main">
-                    <!--画遮罩页-->
-                    <h2 class="title">粥品香坊(大运村)</h2>
-                    <div class="starsWrap">
-                        <v-stars size="48" :score="3.6"></v-stars>
-                    </div>
-                    <v-line class="line">
-                        <template>
-                            <span class="text">优惠信息</span>
-                        </template>
-                    </v-line>
-                    <v-list></v-list>
-                    <v-line class="line">
-                        <template>
-                            <span class="text">商家公告</span>
-                        </template>
-                    </v-line>
-                    <p class="content">
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
-                    </p>
-                </div>
-            </div>
-            <div class="footer">
-                <i class="icon-close" @click="showMask=false"></i>
+    <div class="mask">
+        <div class="mainWrap">
+            <div class="main">
+                <!--画遮罩页-->
             </div>
         </div>
-    </transition>
+        <div class="footer">
+            <i class="icon-close"></i>
+        </div>
+    </div>
     <div class="bottom"></div>
   </div>
 </template>
 
 <script>
     import icon from "components/icon/icon"
-    import line from "components/line/line"
-    import list from "components/list/list"
-    import stars from "components/stars/stars"
     export default {
         name: 'v-head',
-        data(){
-            return{
-                showMask:false
-            }
-        },
         components:{
-            "v-icon":icon,
-            "v-line":line,
-            "v-list":list,
-            "v-stars":stars
+            "v-icon":icon
         }
     }
 </script>
@@ -225,38 +188,6 @@
         .main
             @extend .clearfix
             padding-bottom 96px
-            overflow hidden /*解决margin穿透 塌陷*/
-            .title
-                margin-top 64px
-                text-align center
-                line-height 16px
-                font-size 16px
-                font-weight 700
-                color white
-            .starsWrap
-                width 80%
-                margin 0 auto
-                text-align center
-                margin-top 16px
-                margin-bottom 28px
-            .line
-                width 80%
-                margin 0 auto
-                .text
-                    font-weight 100
-                    margin 0 12px
-                    font-size 14px
-                    color rgba(255,255,255,1)
-            .content
-                margin 0 auto
-                margin-top 24px
-                box-sizing border-box
-                padding 0 12px
-                width 80%
-                font-size 12px
-                line-height 24px
-                color rgba(255,255,255,1)
-                font-weight 200
         .footer
             margin-top -96px
             height 96px
