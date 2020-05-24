@@ -74,7 +74,6 @@
 </template>
 
 <script>
-    import icon from "components/icon/icon"
     import line from "components/line/line"
     import list from "components/list/list"
     import stars from "components/stars/stars"
@@ -91,7 +90,6 @@
             ...mapState(["seller","length"]),
         },
         components:{
-            "v-icon":icon,
             "v-line":line,
             "v-list":list,
             "v-stars":stars

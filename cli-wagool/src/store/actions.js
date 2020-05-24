@@ -13,14 +13,14 @@ export default{
   },
   async [GETGOODS]({commit}){
     //发请求获取数据, 提交mutation, 触发mutations中同步操作vuex中数据的方法
-    const {code,data} = await axios.get("api/seller");
+    const {code,data} = await axios.get("api/goods");
     if(code === OK){
       commit(GETGOODS,data)
     }
   },
   async [GETRATINGS]({commit}){
     //发请求获取数据, 提交mutation, 触发mutations中同步操作vuex中数据的方法
-    const {code,data} = await axios.get("api/seller");
+    const {code,data} = await axios.get("api/ratings");
     if(code === OK){
       commit(GETRATINGS,data)
     }

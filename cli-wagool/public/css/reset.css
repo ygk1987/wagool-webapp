@@ -2,6 +2,8 @@
  * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
  * http://cssreset.com
  */
+/*flex-shrink默认值为1  在元素超出容器的情况下有个自动削减的功能*/
+ *{flex-shrink: 0;}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,

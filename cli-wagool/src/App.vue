@@ -32,13 +32,13 @@
     mounted(){
       //在app组件被挂载后,请求商家相关的信息,并要传给头部组件
       //组件上转发action  action内部发送请求拿到数据  提交mutation  通过mutation同步的修改数据
-      /* this[GETSELLER]();
+      this[GETSELLER]();
       this[GETGOODS]();
-      this[GETRATINGS](); */
+      this[GETRATINGS]();
 
-      this.$store.dispatch(GETSELLER)
+      /* this.$store.dispatch(GETSELLER)
       this.$store.dispatch(GETGOODS)
-      this.$store.dispatch(GETRATINGS)
+      this.$store.dispatch(GETRATINGS) */
     }
   }
 </script>
@@ -49,6 +49,8 @@
     width 100%
     height 100%
     overflow hidden
+    display flex
+    flex-direction column 
     .navs
       one-px(rgba(7,17,27,.1))
       display flex
