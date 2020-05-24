@@ -1,13 +1,18 @@
 <template>
-  <i class="icon" :class="[`icon-${size}`, type]"></i>
+  <i class="icon" :class="[`icon-${size}`, typeArr[type]]"></i>
 </template>
 
 <script>
   export default {
     name: 'icon',
+    data(){
+        return{
+            typeArr:["decrease","discount","guarantee","invoice","special"]
+        }
+    },
     props:{
       size:String,
-      type:String
+      type:Number,
     }
   }
 </script>

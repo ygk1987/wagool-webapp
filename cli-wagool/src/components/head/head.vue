@@ -2,22 +2,22 @@
   <div class="head">
     <div class="top">
         <div class="avatar">
-            <img src="https://fuss10.elemecdn.com/8/40/02872ce8aefe75c16d3190e75ad61jpeg.jpeg" />
+            <img :src="seller.avatar" />
         </div>
         <div class="info">
             <div class="title">
                 <i class="brand"></i>
-                <span class="name">粥品香坊(大运村)</span>
+                <span class="name">{{seller.name}}</span>
             </div>
             <div class="desc">
-                <span>蜂鸟专送/38分钟送达</span>
+                <span>{{seller.description}}/{{seller.deliveryTime}}分钟送达</span>
             </div>
-            <div class="support">
+            <div class="support" v-if="seller.supports">
                 <!-- <i class="icon"></i> -->
                 <!--非props特性的属性:class   props特性的属性:size type-->
                 <!--非props特性的属性会被模板继承下来-->
-                <v-icon class="icon" size="1" type="decrease"></v-icon>
-                <span class="text">在线支付满28送美女</span>
+                <v-icon class="icon" size="1" :type="seller.supports[0].type"></v-icon>
+                <span class="text">{{seller.supports[0].content}}</span>
             </div>
         </div>
         <div class="btn" @click="showMask=true">
@@ -30,43 +30,37 @@
             <i></i>
         </div>
         <p class="text">
-            "是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户"
+            {{seller.bulletin}}
         </p>
         <div class="arrow">
             <i class="icon-keyboard_arrow_right"></i>
         </div>
     </div>
     <div class="bg">
-        <img src="https://fuss10.elemecdn.com/f/5c/ead54394c3de198d3e6d3e9111bbfpng.png">
+        <img :src="seller.bgImg">
     </div>
     <transition name="mask">
         <div class="mask" v-show="showMask">
             <div class="mainWrap">
                 <div class="main">
                     <!--画遮罩页-->
-                    <h2 class="title">粥品香坊(大运村)</h2>
+                    <h2 class="title">{{seller.name}}</h2>
                     <div class="starsWrap">
-                        <v-stars size="48" :score="3.6"></v-stars>
+                        <v-stars size="48" :score="seller.score" :length="length"></v-stars>
                     </div>
                     <v-line class="line">
                         <template>
                             <span class="text">优惠信息</span>
                         </template>
                     </v-line>
-                    <v-list></v-list>
+                    <v-list :supports="seller.supports"></v-list>
                     <v-line class="line">
                         <template>
                             <span class="text">商家公告</span>
                         </template>
                     </v-line>
                     <p class="content">
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
-                        是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户
+                        {{seller.bulletin}}
                     </p>
                 </div>
             </div>
@@ -90,11 +84,11 @@
         name: 'v-head',
         data(){
             return{
-                showMask:false
+                showMask:false,
             }
         },
         computed:{
-            ...mapState(["seller"]),
+            ...mapState(["seller","length"]),
         },
         components:{
             "v-icon":icon,

@@ -1,29 +1,9 @@
 <template>
   <div class="list">
     <ul>
-      <li>
-        <v-icon class="icon" size="2" type="discount"></v-icon>
-        <span class="text">在线支付满28送富婆</span>
-      </li>
-      <li>
-        <v-icon class="icon" size="2" type="discount"></v-icon>
-        <span class="text">在线支付满28送富婆</span>
-      </li>
-      <li>
-        <v-icon class="icon" size="2" type="discount"></v-icon>
-        <span class="text">在线支付满28送富婆</span>
-      </li>
-      <li>
-        <v-icon class="icon" size="2" type="discount"></v-icon>
-        <span class="text">在线支付满28送富婆</span>
-      </li>
-      <li>
-        <v-icon class="icon" size="2" type="discount"></v-icon>
-        <span class="text">在线支付满28送富婆</span>
-      </li>
-      <li>
-        <v-icon class="icon" size="2" type="discount"></v-icon>
-        <span class="text">在线支付满28送富婆</span>
+      <li v-for="(support,index) in supports" :key="index">
+        <v-icon class="icon" size="2" :type="support.type"></v-icon>
+        <span class="text">{{support.content}}</span>
       </li>
     </ul>
   </div>
@@ -33,6 +13,9 @@
   import icon from "components/icon/icon"
   export default {
     name: 'list',
+    props:{
+      supports:Array
+    },
     components:{
       "v-icon":icon
     }
