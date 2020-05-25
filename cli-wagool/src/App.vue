@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import {GETSELLER,GETGOODS,GETRATINGS} from "store/mutation_type.js"
+  import {GETSELLER,GETRATINGS} from "store/mutation_type.js"
   import head from "components/head/head.vue"
   import {mapActions} from "vuex"
 
@@ -27,13 +27,12 @@
       "v-head":head
     },
     methods:{
-      ...mapActions([GETSELLER,GETGOODS,GETRATINGS]),
+      ...mapActions([GETSELLER,GETRATINGS]),
     },
     mounted(){
       //在app组件被挂载后,请求商家相关的信息,并要传给头部组件
       //组件上转发action  action内部发送请求拿到数据  提交mutation  通过mutation同步的修改数据
       this[GETSELLER]();
-      this[GETGOODS]();
       this[GETRATINGS]();
 
       /* this.$store.dispatch(GETSELLER)
