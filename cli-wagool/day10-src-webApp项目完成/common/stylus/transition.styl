@@ -1,0 +1,26 @@
+.mask-enter
+  opacity 0 !important
+.mask-enter-active
+  transition 1s opacity !important 
+.mask-enter-to
+  opacity 1 !important
+
+.mask-leave-active
+  transition 1s opacity !important 
+.mask-leave-to
+  opacity 0 !important
+
+.control-enter
+  opacity 0 !important
+  transform translateX(48px) rotate(0deg) !important
+.control-enter-active
+  transition .5s all !important
+.control-enter-to
+  opacity 1 !important
+  transform translate3d(0,0,0) rotate(-360deg) !important
+
+.control-leave-active
+  transition .5s all !important
+.control-leave-to
+  opacity 0 !important
+  transform translateX(48px) rotate(0deg) !important
