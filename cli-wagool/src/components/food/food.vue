@@ -15,14 +15,19 @@
                 <span class="oldPrice" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
             </span>
         </div>
+        <v-control :food="food"></v-control>
     </div>
 </template>
 
 <script>
+    import control from "components/control/control";
     export default {
         name: "food",
         props:{
             food:Object
+        },
+        components:{
+            "v-control":control
         }
     }
 </script>

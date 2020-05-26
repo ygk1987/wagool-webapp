@@ -23,9 +23,7 @@
           </ul>
       </div>
     </div>
-    <div class="cart">
-      购物车
-    </div>
+    <v-cart class="cartWrap" :selectedFoods="selectedFoods" @clear="clear"></v-cart>
   </div>
 </template>
 
@@ -34,6 +32,7 @@
   import {mapState,mapActions} from "vuex"
   import {GETGOODS} from "store/mutation_type.js"
   import food from "components/food/food";
+  import cart from "components/cart/cart";
   export default {
     name: 'goods',
     data(){
@@ -45,6 +44,17 @@
 
     computed:{
       ...mapState(["goods"]),
+      selectedFoods(){
+        let selectedFoods = [];
+        this.goods.forEach((good)=>{
+          good.foods.forEach((food)=>{
+            if(food.count && food.count > 0){
+              selectedFoods.push(food)
+            }
+          })
+        })
+        return selectedFoods;
+      },
       currentIndex(){ //当前这个currentIndex代表的是左侧列表的哪个li该选中!!!!
         /*让左右列表都产生滑动：
         1)当右侧列表滑动时;滑到一个具体的分类后,这个分类所对应的左侧列表得选中;还得尽量的往包裹区域的顶部滑
@@ -99,6 +109,30 @@
       handleCForMenu(index){
         let top = this.tops[index];
         this.goodScroll.scrollTo(0,-top,300)
+      },
+
+      //购物车+1的逻辑
+      add(food){
+        if(!food.count)
+            //添加一个响应式属性 count
+            this.$set(food,"count",1)
+        else
+            food.count++
+      },
+      //购物车-1的逻辑
+      remove(food){
+        if(food.count > 0)
+            food.count--
+      },
+      //清空购物车
+      clear(){
+        this.goods.forEach((good)=>{
+          good.foods.forEach((food)=>{
+            if(food.count && food.count > 0){
+              food.count = 0
+            }
+          })
+        })
       }
     },
 
@@ -114,10 +148,15 @@
       //所有和dom尺寸 位置 数量相关的操作最好都放在对应数据改变之后的那个nextTick的回调函数中
       this.initScroll();
       this.initTops(); //右侧整个滑屏元素滑动的距离
+
+      //购物车控制组件的相关逻辑
+      this.$bus.$on("add", this.add);
+      this.$bus.$on("remove",this.remove)
     },
 
     components:{
-      "v-food":food
+      "v-food":food,
+      "v-cart":cart
     }
   }
 </script>
@@ -184,7 +223,7 @@
                             margin auto
                         &:last-child
                             border-none()
-    .cart
-      flex-basis 50px
+    .cartWrap
+      flex-basis 46px
       background gray
 </style>

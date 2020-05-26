@@ -12,6 +12,9 @@ Vue.config.productionTip = false
 import icon from "components/icon/icon"
 Vue.component("v-icon", icon);
 
+//定义事件总线
+Vue.prototype.$bus = new Vue();
+
 new Vue({
   render: h => h(App),
   router,
